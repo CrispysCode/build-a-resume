@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import GeneralInfo from "./components/GeneralInfo";
 import EducationInfo from "./components/EducationInfo";
 import JobInfo from "./components/JobInfo";
+import Display from "./components/Display";
 import "./styles/App.css";
 
 function App() {
@@ -29,7 +30,9 @@ function App() {
           onChange={setWork}
           />
       </div>
-      <div className="right"></div>
+      <div className="right">
+        <Display resume={resume} />
+      </div>
     </div>
   );
 }
