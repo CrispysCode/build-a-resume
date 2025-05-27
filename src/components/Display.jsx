@@ -11,7 +11,16 @@ export default function Display({ resume }) {
             <p>{general.email}</p>
 
             <h2>Education Information</h2>
-            <p></p>
+            <p>{education.school}</p>
+            <p>{education.study}</p>
+            <p>{education.gradDate}</p>
+
+            <h2>Employment History</h2>
+            <p>{work.company}</p>
+            <p>{work.position}</p>
+            <p>{work.duties}</p>
+            <p>{work.startDate}</p>
+            <p>{work.endDate}</p>
         </div>
      )
 
