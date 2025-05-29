@@ -1,5 +1,5 @@
 import React from "react";
-
+import "../styles/Display.css"
 export default function Display({ resume }) {
    const { general, education, work } = resume;
      return (
@@ -19,8 +19,8 @@ export default function Display({ resume }) {
             <p>{work.company}</p>
             <p>{work.position}</p>
             <p>{work.duties}</p>
-            <p>{work.startDate}</p>
-            <p>{work.endDate}</p>
+            <p>{work.startDate} to {work.endDate} </p>
+            
         </div>
      )
 

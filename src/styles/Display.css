@@ -1,0 +1,34 @@
+.display {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f4f4f4;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    line-height: 1.6;
+  }
+  
+  .display h2 {
+    border-bottom: 2px solid #333;
+    padding-bottom: 10px;
+    margin-top: 20px;
+    color: #333;
+  }
+  
+  .display p {
+    margin: 5px 0;
+    color: #555;
+  }
+  
+  .display .section {
+    margin-bottom: 20px;
+  }
+  
+  .display .section-title {
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .display .section-details {
+    margin-left: 20px;
+  }

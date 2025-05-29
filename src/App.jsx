@@ -12,27 +12,54 @@ function App() {
     work: [{ company: "", position: "", duties: "", from: "", to: "" }],
   });
 
+  
   const setGeneral = (obj) => setResume({ ...resume, general: obj });
   const setEducation = (arr) => setResume({ ...resume, education: arr });
   const setWork = (arr) => setResume({ ...resume, work: arr })
+  
+  const [isSubmitted, setIsSubmitted] = useState(false);
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setIsSubmitted(true);
+  };
+
+  const handleEdit = () => {
+    setIsSubmitted(false);
+  }
   return (
     <div className="container">
+      {!isSubmitted ? (
+
       <div className="left">
+        <form onSubmit={handleSubmit}>
         <GeneralInfo 
         data={resume.general}
         onChange={setGeneral}/>
+
         <EducationInfo 
           data={resume.education}
           onChange={setEducation}
           />
+
         <JobInfo 
           data={resume.work}
           onChange={setWork}
           />
+          <button type="submit" className="submit-btn">
+            Generate Resume
+          </button>
+          </form>
       </div>
+      ) : (
+        <>
       <div className="right">
         <Display resume={resume} />
+        <button onClick={handleEdit} className="edit-btn">
+          Edit Resume
+        </button>
       </div>
+      </>
+      )}
     </div>
   );
 }

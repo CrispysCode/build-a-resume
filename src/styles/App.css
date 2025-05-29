@@ -14,6 +14,9 @@
 .left {
     align-self: center;
 }
+.right {
+    align-self: center;
+}
 
 h2 {
   font-size: 48px;
@@ -23,3 +26,29 @@ label {
     font-size: 24px;
     margin: 12px 0;
 }
+
+/*Button Syles */
+.submit-btn, .edit-btn {
+    display: block;
+    width: 200px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .submit-btn:hover, .edit-btn:hover {
+    background-color: #45a049;
+  }
+  
+  .edit-btn {
+    background-color: #2196F3;
+  }
+  
+  .edit-btn:hover {
+    background-color: #1E88E5;
+  }
