@@ -7,8 +7,9 @@
     border: 1px solid red;
     height: 100vh;
     display: flex;
-    flex: 1;
+    /* flex: 1; */
     justify-content: center;
+    
 }
 
 .left {
