@@ -19,7 +19,7 @@ export default function Display({ resume }) {
             <p>{work.company}</p>
             <p>{work.position}</p>
             <p>{work.duties}</p>
-            <p>{work.startDate} to {work.endDate} </p>
+            <p>{work.startDate}  {work.endDate} </p>
             
         </div>
      )

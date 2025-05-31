@@ -1,38 +1,51 @@
 import React from "react";
 import "../styles/EducationInfo.css";
 
-export default function EducationInfo({ data, onChange }) {
-
-  const handleChange = (e) => {
+export default function EducationInfo({ data, onChange, addEducation }) {
+  const handleChange = (index, e) => {
     const { name, value } = e.target;
-    onChange({ ...data, [name]: value });
-  }
+    const updatedEducation = data.map((education, i) =>
+      i === index ? { ...education, [name]: value } : education
+    );
+    onChange(updatedEducation);
+  };
   return (
     <div className="education">
       <h2>Education Information</h2>
-      <label>
-        School:
-        <input type="text"
-        name="school"
-        value={data.school}
-        onChange={handleChange}
-        />
-      </label>
-      <label>
-        Study:
-        <input type="text"
-        name="study"
-        value={data.study}
-        onChange={handleChange} />
-      </label>
-      <label>
-        Graduation: 
-        <input type="date"
-         name="gradDate"
-         value={data.gradDate}
-         onChange={handleChange}
-         />
-      </label>
+      {data.map((education, index) => (
+        <div key={index} className="educationEntry">
+          <label>
+            School:
+            <input
+              type="text"
+              name="school"
+              value={education.school}
+              onChange={(e) => handleChange(index, e)}
+            />
+          </label>
+          <label>
+            Study:
+            <input
+              type="text"
+              name="study"
+              value={education.study}
+              onChange={(e) => handleChange(index, e)}
+            />
+          </label>
+          <label>
+            Graduation:
+            <input
+              type="date"
+              name="gradDate"
+              value={education.gradDate}
+              onChange={(e) => handleChange(index, e)}
+            />
+          </label>
+        </div>
+      ))}
+      <button type="button" className="addEducation" onClick={addEducation}>
+        Add Experience
+      </button>
     </div>
   );
 }

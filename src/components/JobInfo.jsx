@@ -1,22 +1,29 @@
 import React from "react";
 import "../styles/JobInfo.css";
 
-export default function JobInfo({ data, onChange }) {
-  const handleChange = (e) => {
+export default function JobInfo({ data, onChange, addJob }) {
+  const handleChange = (index, e) => {
     const { name, value } = e.target;
-    onChange({ ...data, [name]: value });
+    const updatedJobs = data.map((job, i) =>
+    i === index ? {...job, [name]: value } : job
+  );
+    onChange(updatedJobs);
   };
 
   return (
     <div className="job">
       <h2>Job History</h2>
+    {data.map((job, index) => (
+      <div key={index} className="jobEntry">
+        
+
       <label>
         Company
         <input
           type="text"
           name="company"
-          value={data.company}
-          onChange={handleChange}
+          value={job.company}
+          onChange={(e) => handleChange(index, e)}
         />
       </label>
       <label>
@@ -24,8 +31,8 @@ export default function JobInfo({ data, onChange }) {
         <input
           type="text"
           name="position"
-          value={data.position}
-          onChange={handleChange}
+          value={job.position}
+          onChange={(e) => handleChange(index, e)}
         />
       </label>
       <label>
@@ -33,28 +40,33 @@ export default function JobInfo({ data, onChange }) {
         <input
           type="text"
           name="duties"
-          value={data.duties}
-          onChange={handleChange}
+          value={job.duties}
+          onChange={(e) => handleChange(index, e)}
         />
       </label>
       <label>
         Start Date:
         <input
           type="date"
-          name="startDate"
-          value={data.startDate}
-          onChange={handleChange}
+          name="from"
+          value={job.from}
+          onChange={(e) => handleChange(index, e)}
         />
       </label>
       <label>
         End Date:
         <input
           type="date"
-          name="endDate"
-          value={data.endDate}
-          onChange={handleChange}
+          name="to"
+          value={job.to}
+          onChange={(e) => handleChange(index, e)}
         />
       </label>
+    </div>
+    ))}
+    <button type="button" onClick={addJob} className="addJob">
+      Add Experience
+    </button>
     </div>
   );
 }

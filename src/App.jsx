@@ -12,11 +12,21 @@ function App() {
     work: [{ company: "", position: "", duties: "", from: "", to: "" }],
   });
 
-  
   const setGeneral = (obj) => setResume({ ...resume, general: obj });
+
   const setEducation = (arr) => setResume({ ...resume, education: arr });
-  const setWork = (arr) => setResume({ ...resume, work: arr })
-  
+  const addEducation = () => {
+    const newEducation = { school: "", study: "", date: "" };
+    setEducation([...resume.education, newEducation]);
+  };
+
+  const setWork = (arr) => setResume({ ...resume, work: arr });
+  const addJob = () => {
+    const newJob = { company: "", position: "", duties: "", from: "", to: "" };
+
+    setWork([...resume.work, newJob]);
+  };
+
   const [isSubmitted, setIsSubmitted] = useState(false);
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -25,40 +35,35 @@ function App() {
 
   const handleEdit = () => {
     setIsSubmitted(false);
-  }
+  };
   return (
     <div className="container">
       {!isSubmitted ? (
+        <div className="left">
+          <form onSubmit={handleSubmit}>
+            <GeneralInfo data={resume.general} onChange={setGeneral} />
 
-      <div className="left">
-        <form onSubmit={handleSubmit}>
-        <GeneralInfo 
-        data={resume.general}
-        onChange={setGeneral}/>
+            <EducationInfo
+              data={resume.education}
+              onChange={setEducation}
+              addEducation={addEducation}
+            />
 
-        <EducationInfo 
-          data={resume.education}
-          onChange={setEducation}
-          />
-
-        <JobInfo 
-          data={resume.work}
-          onChange={setWork}
-          />
-          <button type="submit" className="submit-btn">
-            Generate Resume
-          </button>
+            <JobInfo data={resume.work} onChange={setWork} addJob={addJob} />
+            <button type="submit" className="submit-btn">
+              Generate Resume
+            </button>
           </form>
-      </div>
+        </div>
       ) : (
         <>
-      <div className="right">
-        <Display resume={resume} />
-        <button onClick={handleEdit} className="edit-btn">
-          Edit Resume
-        </button>
-      </div>
-      </>
+          <div className="right">
+            <Display resume={resume} />
+            <button onClick={handleEdit} className="edit-btn">
+              Edit Resume
+            </button>
+          </div>
+        </>
       )}
     </div>
   );
